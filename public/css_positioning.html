@@ -1,0 +1,168 @@
+<!-- css_positioning.html -->
+
+<<!DOCTYPE html>
+<html>
+<head>
+	<title>Positioning Exercise</title>
+	<link rel="stylesheet" href="css_box_model.css">
+	<style type="text/css"> 
+		h1{
+			color:blue;
+			text-align: center;
+
+		}
+		h2{	font-size: 40px;
+			/*color:purple;*/
+			text-decoration: underline;
+			text-align: center;
+
+		}
+
+		.container {
+			width: 1250px;
+			height: 300px;
+			background-color: grey; 
+			border-radius: 5;
+			margin-right: 50px;
+		}
+
+		.box{
+			border: 10px black;
+			border-radius: 5;
+			box-shadow: 10px 10px 5px black;
+			height:100px;
+			width:100px;
+			padding: 10px 10px;
+			color: white;
+			font-weight: bold;
+			font-size: 25px;
+			text-align: center;
+			text-shadow: 2px 2px black;
+			margin-bottom:10px;
+			float: left;
+			position: fixed;
+			}
+
+		.ribbon {
+			top: -175px;
+			position: relative;
+			float: right;
+		}
+
+		.arrow-image {
+			position: relative;
+			top: -150px;
+			left:70;
+			color: green;
+		}
+		.arrow-image:hover {
+			color:rgba(255,255,255,.5);
+
+		}
+
+
+		.box:hover {
+			color:rgba(255,255,255,.5);
+
+		}
+
+		#redbox1 {
+
+			background-color: red; 
+			margin-left: 100px;
+			float: left;
+			margin-top: 50px;
+		}
+		
+
+		#orangebox1 {
+			background-color: orange; 
+			margin-left: 275px;
+			margin-top: 150px;
+
+			}
+		#yellowbox1 {
+			background-color: yellow; 
+			margin-left: 450px;
+			margin-top: 250px;
+			}
+		#greenbox1 {
+			background-color: green; 
+			margin-left: 625px;
+			margin-top: 200px;
+			}
+		#bluebox1 {
+			background-color: blue; 
+			margin-left: 800px;
+			margin-top: 150px;
+			}	
+		#pinkbox1 {
+			background-color: purple; 
+			margin-left: 975px;
+			margin-top: 100px;
+			}
+		a {
+			color: #000;
+		}
+		a:hover {
+			color:rgba(255,255,255,1);
+		}
+
+	</style>
+
+</head>
+<body>
+	<h1>CSS Box Model</h1>
+	 <!-- <a href="http://www.google.com" target="_blank">Go to Google</a>  -->
+	<a href="https://www.google.com/search?q=johnny+manziel+money+sign&es_sm=91&source=lnms&tbm=isch&sa=X&ei=Pe79U4fLIJWcyQSNmoDoDA&ved=0CAgQ_AUoAQ&biw=1279&bih=587#facrc=_&imgdii=_&imgrc=NnK-CbaFDVQyqM%253A%3BbmDkoneK-mcGLM%3Bhttp%253A%252F%252Fwww.sportspickle.com%252Fwp-content%252Fuploads%252F2013%252F09%252Fmoney-shot.jpg%3Bhttp%253A%252F%252Fwww.sportspickle.com%252F2013%252F09%252Fjohnny-manziel-says-will-tone-act-per-valued-advice-national-columnists%3B660%3B495"><h2>visible spectrum wavelengths</h2></a>
+
+		<div class="ribbon">
+			<img src="/img/codeup-ribbon.png">
+		</div>
+
+		<div class="container">
+			<div id="redbox1" class="box">
+	    		620-750ml
+	    		<div class="arrow-image">
+	    			<img src="/img/codeup-arrow.png">
+	    		</div>
+	    	</div>
+	    		
+	    	<div id="orangebox1" class="box">
+	    		590-620ml
+	    		<div> 
+	    			<img class="arrow-image" src="/img/codeup-arrow.png">
+	    		</div>
+
+			</div>
+
+			<div id="yellowbox1" class="box">
+	    		570-590ml
+	    		<div class="arrow-image">
+	    			<img src="/img/codeup-arrow.png">
+	    		</div>
+			</div>
+
+			<div id="greenbox1" class="box">
+	    		495-570ml
+	    		<div class="arrow-image">
+	    			<img src="/img/codeup-arrow.png">
+	    		</div>
+			</div>
+
+			<div id="bluebox1" class="box">
+	    		450-495ml
+	    		<div class="arrow-image">
+	    			<img src="/img/codeup-arrow.png">
+	    		</div>
+			</div>
+
+			 <div id="pinkbox1" class="box">
+	    		389-450ml
+	    		<div class="arrow-image">
+	    			<img src="/img/codeup-arrow.png">
+	    		</div>
+			</div>
+		</div>
+</body>
+</html>									
