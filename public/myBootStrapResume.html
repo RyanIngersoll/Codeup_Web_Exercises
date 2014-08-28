@@ -10,15 +10,43 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <style type="text/css"> 
-    h1{
-      color:blue;
-      text-align: center;
+
+body {
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.42857143;
+color: #333;
+/*background-color: #fff*/;
+background-image: url(img/bluecomputercode.jpg);
+}
+
+    h1 {
+      color: white;
+      text-align: left;
+
+    }
+
+    .jumbotron h1, .jumbotron .h1 {
+    font-size: 40px;
+    } 
+
+    .btn-primary {
+        color: #fff;
+        background-color: grey;
+        border-color: #357ebd;
+      }
+
+    
+    h3 {
+      color: white;
+      text-align: left;
 
     }
     .navbar-default {
         background-color: rgba(29, 38, 58, 0.48);
         border-color: #0A0000;
     }
+
     .navbar-brand:focus {
           color: Black;
           background-color: transparent;
@@ -32,10 +60,48 @@
                 color: #F3EDED;
                 background-color: #181010;
             }
-            
+
         .navbar-default .navbar-nav>li>a {
                 color: #FAF7F7;
             }
+        .dropdown-menu {
+position: absolute;
+top: 100%;
+left: 0;
+z-index: 1000;
+display: none;
+float: left;
+min-width: 160px;
+padding: 5px 0;
+margin: 2px 0 0;
+font-size: 14px;
+text-align: left;
+list-style: none;
+color: white;
+background-color: black;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+border: 1px solid #ccc;
+border: 1px solid rgba(0,0,0,.15);
+border-radius: 4px;
+-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+ .dropdown-toggle{
+  color: white;
+ }
+
+ .jumbotron {
+padding: 30px;
+margin-bottom: 30px;
+color: white;
+background-color: black;
+
+/*background-image: url(img/bitcoin_conversion.jpeg);*/
+}
+.container .jumbotron {
+border-radius: 100px;
+}
 
 
     </style>
@@ -52,13 +118,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">The Resume According to Ryan</a>
+      <a class="navbar-brand" href="#">The Resume According to Ryan Ingersoll</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="https://www.linkedin.com/profile/view?id=49609689&trk=nav_responsive_tab_profile">LinkedIn Profile</a></li>
+        <li class="active"><a href="https://www.linkedin.com/profile/view?id=49609689&trk=nav_responsive_tab_profile" target ="_blank">LinkedIn Profile</a></li>
         <li><a href="https://github.com/RyanIngersoll">GitHub Portfolio</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Professional Life <span class="caret"></span></a>
@@ -107,12 +173,17 @@
         <p>...</p>
         <h3>Who I am.... <span class="label label-default">A Brief Glimpse Backwards in Time</span></h3>
         <p>A full stack developer in LAMP +J...Water systems engineer and installer for horizontal fracking...Risk management expert in alternative insurance and tax strategies...Designer of quantitative trading strategies...Independent commodity trader...Financial engineer of structured credit derivatives...High frequency equities trader...And last but not least, sports enthusiast, aspiring writer, and father of two greatest kids in the world</p>
-
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+        <h1>What is possible when opportunity meets hard work?</h1>
+        
+        <p><a class="btn btn-primary btn-lg" role="button">Click Here to Find Out</a></p>
       </div>
   </div>
-        <h1>What things are made possible when opportunity meets hard work?</h1>
-        <h3>I has been my good fortune to have seen and accomplished what many only dream about. Yet there is so much more undiscovered country, that I am more determined than ever to keep pushing myself to the limit everyday. Most of all I desire to lead others by example and inspire greatness from those I am able to help.</h3>  
+        
+        <!-- <h3>It has been my good fortune to have experienced many things and accomplished a great deal which has all contributed to the person I am today.</h3> -->
+        
+         <!-- <p>I have started my own business(twice!)...Worked on Wall Steet(Goldman Sachs, ahem.)...Delivered pizza...Traded commodities at the Chicago Board of Trade...Started a family(two kids)...Filed a million dollar tax return...Driven a cab in Chicago(maybe the most intesting job ever)...Sweated in the oilfields of South Texas...Designed a formula for Insurance Linked Futures...Refurbished HUD housing projects...Obtained two masters degrees...Learned full stack developing and published a LinkedIn series about how I did it(Thankyou Codeup!)...and much more to come in the future...</p>
+
+        <h3>Yet there there are infinite undiscovered worlds I have yet to explore, I am more determined than ever to keep pushing myself to the limit everyday. Most of all I desire to lead others by example and inspire greatness to those who surround me.</h3>   -->
 </div>
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
