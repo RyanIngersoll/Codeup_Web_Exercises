@@ -71,14 +71,41 @@ var_dump($_GET);
 
 		<p>What operating systems have you used?</p>
 		<p>
-		<label><input type="checkbox" id="os1" name="os[]" value="linux"> Linux</label>
-		<label><input type="checkbox" id="os2" name="os[]" value="osx"> OS X</label>
-		<label><input type="checkbox" id="os3" name="os[]" value="windows"> Windows</label>
+		<label>
+		<input type="checkbox" id="os1" name="os[]" value="linux"> Linux</label>
+		<label>
+		<input type="checkbox" id="os2" name="os[]" value="osx"> OS X</label>
+		<label>
+		<input type="checkbox" id="os3" name="os[]" value="windows"> Windows</label>
 		</p>
-			<input type="submit" value="send email now">
-		  
 
-    </form> 
+			<input type="submit" value="send email now">
+
+		<p>
+		<label for="transmission">Select your transmission type: </label>
+		<select id="transmission" name="transmission">
+    	<option>Automatic</option>
+    	<option selected>Manual</option>
+		</select> 
+		<input type="submit" value="submit test">
+		</p>
+
+
+		<p>
+		<label for="os">What operating systems have you used?
+		</label>
+		<select id="os" name="os[]" multiple>
+    	<option value="linus">Linux</option>
+    	<option value="osx">OS X</option>
+    	<option value="windows">Windows</option>
+    	</select>
+    	<input type="submit" value="submit test">
+		</p>
+
+		
+
+   	</form> 
+
 
 
 

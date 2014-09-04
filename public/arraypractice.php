@@ -1,38 +1,38 @@
 <?php
 
-//  $array = [
-//  	'one',
-//  	'two',
-//  	'three'
-// // keys are = index number
+ $array = [
+ 	'one',
+ 	'two',
+ 	'three'
+// keys are = index number
 
-//  ];
+ ];
 
-// var_dump($array) . PHP_EOL;
-
-
-// // add new data to end of array by array_push
-// $newArray = ['four','five','six'];
-// array_push($array,$newArray);
-// var_dump($array) . PHP_EOL;
+var_dump($array) . PHP_EOL;
 
 
-// // take items of end with array_pop
-// $items = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'];
-// $last_item = array_pop($items); // would take off 'sixth' and put it in variable $last item
-// echo $items + $last_item;  // prints out original array
+// add new data to end of array by array_push
+$newArray = ['four','five','six'];
+array_push($array,$newArray);
+var_dump($array) . PHP_EOL;
 
 
-// // take item off beg of array w array_shift
-// $items = ['First', 'Second', 'Third', 'Fourth', 'Fifth'];
-// $first_item = array_shift($items); // seperates 'first'
-// echo $first_item + $items;
+// take items of end with array_pop
+$items = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth'];
+$last_item = array_pop($items); // would take off 'sixth' and put it in variable $last item
+echo $items + $last_item;  // prints out original array
 
 
-// // add item to front of an array with array_unshift
-// $items = ['Second', 'Third', 'Fourth', 'Fifth'];
-// array_unshift($items, 'New First Item!');
-// print_r($items);
+// take item off beg of array w array_shift
+$items = ['First', 'Second', 'Third', 'Fourth', 'Fifth'];
+$first_item = array_shift($items); // seperates 'first'
+echo $first_item + $items;
+
+
+// add item to front of an array with array_unshift
+$items = ['Second', 'Third', 'Fourth', 'Fifth'];
+array_unshift($items, 'New First Item!');
+print_r($items);
 
 
 
@@ -53,7 +53,11 @@
 	print_r($assoc_array) . PHP_EOL;
 
 // use array_merge as better option for assoc. arrays
-$array = array('Username' => 'user', 'Email' => 'email'); 
+$array = array(
+                'Username' => 'user',
+               'Email' => 'email'
+               );
+                
 $array = array_merge($array, array('Password' => 'pass'));
 
 $assoc_array = array_merge($assoc_array, array('key3' => 'four'));

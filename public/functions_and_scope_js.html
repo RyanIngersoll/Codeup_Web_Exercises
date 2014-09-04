@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>js functions</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+ // todo: Fill in your name here.
+
+// todo:
+// Create a function called 'sayHello' that takes a parameter 'name'.
+
+// var myNameIs = 'Ryan';
+// var random = Math.floor((Math.random()*100)+1);
+
+// function sayHello(name){
+// 	console.log('hello ' + name);
+// }
+
+// function isOdd(number){
+// 			console.log(number);
+// 			var message = (number % 2 !== 0) ? " Number is odd." : " number is not odd";
+// 			console.log(message);
+
+// }
+// sayHello(myNameIs);
+// isOdd(random);
+
+// When called, the function should log a message that says hello from the passed in name.
+
+// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+
+// do not worry about the details of this line
+// just know that it genrates a random number between 1 and 100
+
+
+// todo:
+// Create a function called 'isOdd' that takes a number as a parameter.
+// The function should use the ternary operator to log a message.
+// The log should tell the number passed in and whether it is odd or not.
+
+// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
+
+
+    //Refactor the above code using an IFFE so that it contains no global variables or functions
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//var myNameIs = 'Ryan';
+//var random = Math.floor((Math.random()*100)+1);
+
+(function() {
+	var name;
+	var number;
+	name = 'Ryan'
+	number = Math.floor((Math.random()*100)+1);
+
+
+	function sayHello(name){
+			console.log('hello ' + name);
+		}
+
+	function isOdd(number){
+			console.log(number);
+			var message = (number % 2 !== 0) ? " Number is odd." : " number is not odd";
+			console.log(message);
+		}
+	sayHello(name);
+	isOdd(number);	
+
+}());
+
+
+
+
+// declare a function that will be invoked immediately
+// notice the parens surrounding the function. these are necessary
+// (function () {
+//     // variables and functions in here are only accessible inside this function's scope
+//     var iffeVar = "I'm local to the IIFE.";
+// }());
+// // also notice the double parens after the closing curly brace. these invoke the function.
+
+// alert(iffeVar); // undefined
+
+    </script>
+</body>
+</html>

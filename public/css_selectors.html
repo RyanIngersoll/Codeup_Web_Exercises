@@ -10,6 +10,7 @@ Finally, save your work, commit the changes to your git repository, and push to 
 <html>
   <head>
     <title>Selectors Exercise</title>
+    <link rel="stylesheet" href="/css/site.css">
     <style>
 
       /* selector for id="container" */
@@ -24,9 +25,23 @@ Finally, save your work, commit the changes to your git repository, and push to 
         that are a descendent of id="container"
         and have a class of "fancy-header"
         */
-      #container>h1.fancy-header {
-        color: blue;
+      #container h1.fancy-header {
+        color: black;
+        
+        background-color: transparent;
         text-decoration: underline;
+        font-family: Helvetica, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        font-style: italic;
+        font-variant: small-caps;
+        text-decoration: line-through;
+        font-size: 4em;
+      
+        outline-color: yellow;
+
+      }
+      body {
+        background-image: url(img/pagani.jpg)
       }
 
       /* selector for all "em" elements */
@@ -43,13 +58,14 @@ Finally, save your work, commit the changes to your git repository, and push to 
         selector for all "anchor" elements
         that are a direct child of an element with class="article"
         */
-       article.a {
+       .article >a {
         float:right;
       }
 
     </style>
   </head>
   <body>
+
     <div id="container">
       <section class="article">
         <h1 class="fancy-header">Heading One</h1>

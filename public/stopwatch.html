@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>Stop Watch</title>
+</head>
+<body>
+    <h1>stop watch</h1>
+    <button id="startButtton">Start</button>
+    <button id="stopButtton">Stop</button>
+    <p id= "watchValue">0</p>
+    <script>
+        var time = 0;
+        var intervalId;
+
+        var startButtton = document.getElementById('startButtton');
+        var stopButtton = document.getElementById('stopButtton');
+
+        var startEvent = function () {
+            IntervalId = setInterval(function() {
+                time++;
+                document.getElementById("watchValue").innerText = (time/100);
+
+            }, 10);
+
+            startButtton.removeEventListener("click", startEvent);
+
+        };
+        
+
+        startButtton.addEventListener('click', startEvent);
+
+        
+
+        stopButtton.addEventListener('click', function() {
+
+            clearInterval(IntervalId);
+
+            startButtton.addEventListener('click',startEvent);
+    });
+        // // create a handler function
+        // var listener = function (event) {
+        //     alert('You clicked the button!');
+        // }
+
+        // // register the listener to handle clicks on btn1
+        // document.getElementById('btn1').addEventListener('click', listener, false);
+
+    </script>
+</body>
+</html>
