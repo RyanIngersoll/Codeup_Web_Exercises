@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>moment examples</title>
+</head>
+<body>
+    
+    <script> src="js/moment.js"></script>
+    <script> src="js/my_moment_code.js"></script>
+
+    </script>
+</body>
+</html>

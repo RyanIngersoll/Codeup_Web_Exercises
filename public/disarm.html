@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Disarm the BOM (Browser Object Model)</title>
+</head>
+<body>
+	<h1>Mission Impossible!</h1>
+	<h3>press the right combination of 3 buttons to stop the code</h3>
+	<button id="btndont">DONT</button>
+	<button id="btnmess">MESS</button>
+	<button id="btnup">UP</button>
+	<h3>you don't want to see what happens if you loose</h3>
+
+	<div id="message"></div>
+	<img id="boom image" src="">
+
+	<script>
+ 
+ 	//var messageDiv = document.getElementById('message');
+ 	var messageDiv = document.getElementById('message');
+ 	var imageBoom = document.getElementById('boom image');
+
+	var detonationTimer = 10; // seconds
+ 
+	var intervalId = setInterval(function () {
+		
+		detonationTimer--;
+ 
+		console.log(detonationTimer + '...');
+ 
+		if (detonationTimer == 0) {
+			messageDiv.innerHTML = 'BOOOMMM!!';
+			//imageBoom.attributes.src.value = 'https://www.google.com/images/srpr/logo11w.png';
+			clearInterval(intervalId);
+		}
+ 
+	}, 1000);
+
+	 
+ 	var btndont = document.getElementById('btndont');
+
+ 	btndont.addEventListener('mouseover', function () {
+ 		imageBoom.attributes.src.value = 'https://www.google.com/images/srpr/logo11w.png';
+ 	});
+
+ 	btndont.addEventListener('mouseout', function () {
+ 		imageBoom.attributes.src.value = '';
+ 	});
+
+	// var btnDisarm = document.getElementById('btnDisarm');
+ 
+	// btnDisarm.addEventListener('click', function () {
+	// 	clearInterval(intervalId);
+	// 	alert('You are a hero! You disarmed the BOM!');
+	// });
+ 
+	</script>
+</body>
+</html>

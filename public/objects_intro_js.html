@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>objects json</title>
+</head>
+<body>
+    
+    <script>
+// //var car = {};
+// car.make = "Toyota";
+// car.model = "Camry";
+
+// // create a honk method on the car object
+// car.honk = function () {
+//     alert('Honk! Honk!');
+// };
+
+// // honk the horn
+// car.honk();
+
+// todo:
+// Create person object with firstName and lastName properties (set to your first and last name).
+// var person = {};
+// person.firstName = 'Ryan';
+// person.lastName = 'Ingersoll';
+
+// // var person = todo;
+
+// // todo:
+// // Add a say hello method to the person object that alerts hello using the firstName and lastName properties.
+// person.sayHello = function() {
+// 	alert('hello' + this.firstName + this.lastName);
+// }
+
+// // Say hello from the person object.
+//  person.sayHello();
+
+///-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------///
+/// intro to JSON
+
+
+// todo:
+// Create an array of objects that represent books.
+
+
+
+var books = [
+ 	{
+		'title'  : 'tom sawyer',
+		'author' : {
+			'firstName': 'mark ',
+			'lastName' : 'twain'
+		}
+	},
+
+	{
+		'title'  : 'fight club',
+		'author' : {
+			'firstName': 'david ',
+			'lastName' : 'fincher'
+		}
+	},
+
+	{
+		'title'  : 'liars poker',
+		'author' : {
+			'firstName': 'michael ',
+			'lastName' : 'lewis'
+		}
+	},
+
+	{
+		'title' : 'smartest guys in the room',
+		'author': {
+			'firstName': 'some ',
+			'lastName' : 'girl'
+		}
+	}
+]
+
+// Each book should have a title and an author.
+// The book author should be an object with a firstName and lastName.
+// Be creative and add at least 5 books to the array
+
+
+// log out the books array
+console.log(books);
+
+// todo:
+// Loop through the array of books using .forEach and print out the specified information about each one.
+// start loop here
+arrayName.forEach(function(element, index, array))
+				//name of index, index #, nameof array
+books.forEach(function(book, index){
+	console.log("Book # " + index);
+    console.log("Title: " + book.title);
+    console.log("Author: " + book.author.firstName + book.author.lastName);
+    console.log("---");
+});
+
+
+	 </script>
+</body>
+</html>

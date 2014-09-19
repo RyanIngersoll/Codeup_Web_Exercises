@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>popupmomentcalendar</title>
+</head>
+<body>
+    <script src="js/moment.js"></script>
+    <script src="js/my_moment_code.js"></script>
+
+    <h1>"the worst blog ever"</h1>
+    <button id="startButtton">Click Here if you want to track how much time you are wasting on this blog</button>
+    <button id="stopButtton">click here if you want to stop torturing yourself</button>
+    
+    <p id= "watchValue">0</p>
+    <h2 id = "blog title">Today's News</h2>
+    <h3 id="blog1TimeStamp">Blog 1</h3>
+    <h3 id="timeElapsed">Elapsed Time</h3>
+
+    <p id= "blogfiller">Bacon ipsum dolor sit amet dolore minim leberkas, short ribs voluptate meatloaf kielbasa sirloin kevin. Ut ad brisket prosciutto meatloaf quis in kevin consectetur tail chicken reprehenderit. Nostrud fatback shankle chuck tail drumstick et eu porchetta pancetta non. Duis short loin esse, fatback dolor landjaeger in pariatur cupidatat hamburger magna pastrami meatball. Ut shank nostrud, frankfurter prosciutto turducken pancetta tenderloin velit magna dolore tongue mollit dolore.
+
+Andouille do pork loin biltong turkey proident. Shank beef ribs quis turkey pork. Short loin doner tempor magna, eiusmod chuck culpa shank sed aliqua. Ground round pork exercitation ut id voluptate. Fugiat laboris exercitation turkey tempor proident in bresaola.
+
+</p>
+
+    <script>
+    //var codeup = new Date(2014, 1, 4, 9, 0, 0);
+    //console.log(codeup.toString()); // Tue Feb 04 2014 09:00:00 GMT-0600 (CST)
+
+    var now = moment().format('MMMM Do YYYY, h:mm:ss a');
+    console.log(now);
+
+
+    moment().startOf('day').fromNow(); 
+//-----------------------------------------------------------------
+
+
+        var time = moment().format('ssss');
+        console.log(time);
+        //var timeConvert = now;
+
+        var intervalSet;
+
+        var startButtton = document.getElementById('startButtton');
+        var stopButtton = document.getElementById('stopButtton');
+        var Blog1 = document.getElementById('blog1TimeStamp');
+        var Blog1Title = document.getElementById('blog title');
+        var timeElapsed = document.getElementById('timeElapsed')
+        
+
+        var startEvent = function () {
+            var currentMoment = moment();
+            var currentTime = 0;
+            
+            intervalSet = setInterval(function() {
+                time++;
+                // newTime = moment(time).format();
+                document.getElementById("watchValue").innerText = " seconds you have wasted: " + time;
+                document.getElementById("blog1TimeStamp").innerText = now;
+
+            }, 10);
+
+            startButtton.removeEventListener("click", startEvent);
+
+        };
+
+        startButtton.addEventListener('click', startEvent);
+        stopButtton.addEventListener('click', function() {
+
+            clearInterval(intervalSet);
+
+            startButtton.addEventListener('click',startEvent);
+    });
+        
+    </script>
+</body>
+</html>
