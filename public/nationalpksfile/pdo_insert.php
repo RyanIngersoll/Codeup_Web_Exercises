@@ -1,5 +1,8 @@
 // <?php
-require 'dbconnection.php';
+$dbc = new PDO('mysql:host=127.0.0.1;dbname=codeup_pdo_test_db', 'codeup', 'password');
+
+// Tell PDO to throw exceptions on error
+$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 // $stmt->bindValue(:placeholder, actual_value, value_type)
