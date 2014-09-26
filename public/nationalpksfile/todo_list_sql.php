@@ -146,28 +146,45 @@ function addChore($dbc){
 
         <title>"SQL TO DO LIST"</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <style type="text/css"> 
 
+          .jumbotron {
+              padding: 30px;
+              margin-bottom: 30px;
+              color: white;
+              background-color: black;
+
+              /*background-image: url(img/bitcoin_conversion.jpeg);*/
+              }
+
+          .container .jumbotron {
+              border-radius: 100px;
+              }
+
+            .button .jumbotron{
+                  margin: 0;
+                  font: inherit;
+                  color: black;
+                  }
+        </style>
     </head>
 		<body style = "padding: 50px">
 
-            <p>
-               <? if($offset != 0):?>
-                 <button><h4><a href="todo_list_sql.php?offset=<?=$offset - $fix;?>">PREV</a></h4></button> 
-               <? endif; ?>
-
-               <? if($offset + $limit < $numRows):?>
-                  <button><h4><a href="todo_list_sql.php?offset=<?=$offset + $fix;?>">NEXT</a></h4></button>
-                 
-               <? endif; ?>
-          </p>
+            
 			
       <h1>Prioritized mySQL Chore List</h1>
 			 <h3>Rank 1(highest) to 5</h3>
-       <h3><? echo "There are " . $numRows . " chores on the list"?></h3>
+       
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-8">
 
+            <div class="jumbotron">
              <form action="todo_list_sql.php" method="POST">
               <div> 
+
                <? if(isset($_GET['offset'])) {
+                //counter for # of items
                     $i = $offset;
                     // $i++;
                   } else {
@@ -176,21 +193,33 @@ function addChore($dbc){
 
                 ?> 
                 <?if(isset($todo_list)): ?> 
-                  
+                  <h3><? echo "There are " . $numRows . " chores on the list"?></h3>
                 <?foreach($todo_list as $entry) : ?>
                   
-                      <h2><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?=$entry['id'];  ?>"><? echo " item: " . ++$i . " " . $entry['name']; ?><?= " PRIORITY: " . " " . $entry['priority'] ?></h2> 
+                      <h3><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?=$entry['id'];  ?>"><? echo " item: " . ++$i . " " . $entry['name']; ?><?= " PRIORITY: " . " " . $entry['priority'] ?></h3> 
                     <?php endforeach;?>
 
                 <?endif;?>
+                    <p>
+                         <? if($offset != 0):?>
+                           <button><h4><a href="todo_list_sql.php?offset=<?=$offset - $fix;?>">PREV PG</a></h4></button> 
+                         <? endif; ?>
+
+                         <? if($offset + $limit < $numRows):?>
+                            <button><h4><a href="todo_list_sql.php?offset=<?=$offset + $fix;?>">NEXT PG</a></h4></button>
                            
+                         <? endif; ?>
+                    </p>       
 
                     </div>
-
-                    <h2><button type="btn-primary" name="remove-entry" value="remove-entry">Remove</button></h2>
+                  </div>
+                    <h2><button type="btn-primary" name="remove-entry" value="remove-entry">Remove Items</button></h2>
 
                   </form>
-
+                
+              </div>
+          </div>
+      </div>
                   <form method = "POST">
                     <h3><input type="radio" name="sort-type" value="sort-name" id="sort-name"><? echo " "; ?><label for="sort-name"><? echo " "; ?>Name Sort</label><? echo " "; ?><input type="radio" name="sort-type" value="sort-prior" id="sort-prior"><? echo " "; ?><label for="sort-prior"><? echo " "; ?>Priority Sort</label><? echo " "; ?><input type="radio" name="sort-type" value="sort-id" id="sort-id"><? echo " "; ?><label for="sort-id"><? echo " "; ?>ID Sort</label></h3>
                     <h3><button type="submit" name="sortlist" value = "sortlist">SORT n DISPLAY</button></h3>
