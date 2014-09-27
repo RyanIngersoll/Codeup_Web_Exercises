@@ -16,19 +16,23 @@ $numRows = (int)$dbc->query("SELECT count(*) FROM todo_list")->fetchColumn();
 
 $offset = isset($_GET['offset']) && ($_GET['offset'] > 0) && ($_GET['offset'] <= $numRows) ? intval($_GET['offset']) : 0;
 
-
 function fixPage($offset, $limit){
-          if ($offset > 0 && $offset < $limit){
-              $newlimit = 1;
-                  return $newlimit;
-          }
-          else{   
-             	return $limit;
-            }
-        }
+    if ($offset > 0 && $offset < $limit){
+        $newlimit = 1;
+        return $newlimit;
+    } else{   
+     	return $limit;
+    }
+}
 
 $fix = fixPage($offset, $limit);
 
+function delete_list($dbc, $limit, $offset) {
+
+    $stmt = $dbc->prepare("DELETE FROM todo_list");
+    $stmt->execute();
+  
+}
 
 function get_todo_list($dbc, $limit, $offset) {
 
@@ -39,40 +43,38 @@ function get_todo_list($dbc, $limit, $offset) {
 	$stmt->execute();
 
 	return $stmt->fetchALL(PDO::FETCH_ASSOC);
-
+    throwError($stmt);
 }
 
 function get_todo_list_prior($dbc, $limit, $offset) {
 
-  $stmt = $dbc->prepare("SELECT * FROM todo_list order by priority asc LIMIT :limit OFFSET :offset");
+    $stmt = $dbc->prepare("SELECT * FROM todo_list order by priority asc LIMIT :limit OFFSET :offset");
 
-  $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
-  $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
-  $stmt->execute();
-
-  return $stmt->fetchALL(PDO::FETCH_ASSOC);
+    $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
+    $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 }
 
 function get_todo_list_name($dbc, $limit, $offset) {
 
-  $stmt = $dbc->prepare("SELECT * FROM todo_list order by name asc LIMIT :limit OFFSET :offset");
+    $stmt = $dbc->prepare("SELECT * FROM todo_list order by name asc LIMIT :limit OFFSET :offset");
 
-  $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
-  $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
-  $stmt->execute();
+    $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
+    $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchALL(PDO::FETCH_ASSOC);
 
-  return $stmt->fetchALL(PDO::FETCH_ASSOC);
-
-  throwError($stmt);
+    throwError($stmt);
     
-    }
+}
 
-    function throwError($stmt){
-      if(empty($stmt->fetchALL(PDO::FETCH_ASSOC))){
-          throw new Exception("your todo list is empty");
-        }
+function throwError($stmt){
+    if(empty($stmt->fetchALL(PDO::FETCH_ASSOC))){
+        throw new Exception("your todo list is empty");
     }
+}
 
 function addChore($dbc){
 
@@ -86,17 +88,22 @@ function addChore($dbc){
     header('Location: todo_list_sql.php');
 }
 
-      if(!empty($_POST['name'])){
+try { 
+    if(!empty($_POST['name'])){
           
-          addChore($dbc);
-       }
+        addChore($dbc);
+    }
 
+    if(isset($_POST['checkboxall'])){
 
-        if(isset($_POST['checkbox'])){
+        delete_list($dbc, $limit, $offset);
+    }
+
+    if(isset($_POST['checkbox'])){
           
-            $checkbox = $_POST['checkbox'];
+        $checkbox = $_POST['checkbox'];
           
-            for($i=0;$i<count($_POST['checkbox']);$i++){
+        for($i=0;$i<count($_POST['checkbox']);$i++){
 
             $id = $checkbox[$i];
             $stmt = $dbc->prepare('DELETE FROM todo_list WHERE id= :id');
@@ -104,39 +111,28 @@ function addChore($dbc){
 
             $stmt->execute();
 
-          }
-      }
+        }
+    }
 
-
-  try {  
-
-
-      if(isset($_POST['sort-type'])){
+    if(isset($_POST['sort-type'])){
 
         if($_POST['sort-type'] == 'sort-name'){
       
-          $todo_list = get_todo_list_name($dbc, $limit, $offset);
-        }
-
-        elseif($_POST['sort-type'] == 'sort-prior'){
+            $todo_list = get_todo_list_name($dbc, $limit, $offset);
+        } elseif($_POST['sort-type'] == 'sort-prior'){
       
-          $todo_list = get_todo_list_prior($dbc, $limit, $offset);
+            $todo_list = get_todo_list_prior($dbc, $limit, $offset);
+        } elseif($_POST['sort-type'] == 'sort-id') {
+
+            $todo_list = get_todo_list($dbc, $limit, $offset);
         }
 
-       elseif($_POST['sort-type'] == 'sort-id') {
-
-          $todo_list = get_todo_list($dbc, $limit, $offset);
-        }
-
-      }
-      else{
+    } else{
         $todo_list = get_todo_list_name($dbc, $limit, $offset);
-      }
     }
-
-    catch(Exception $e){
-      $catcherror = $e->getMessage();
-    }
+} catch(Exception $e){
+    $catcherror = $e->getMessage();
+}
 
 
 ?>
@@ -183,24 +179,46 @@ function addChore($dbc){
              <form action="todo_list_sql.php" method="POST">
               <div> 
 
-               <? if(isset($_GET['offset'])) {
-                //counter for # of items
-                    $i = $offset;
-                    // $i++;
-                  } else {
-                    $i = 0;
-                  }
-
-                ?> 
+                <?php
+                    if(isset($_GET['offset'])) {
+                        //counter for # of items
+                        $i = $offset;
+                    } else {
+                        $i = 0;
+                    }
+                ?>
+                <h3><em>There are <?= $numRows ?> chores on the list</em></h3>
                 <?if(isset($todo_list)): ?> 
-                  <h3><? echo "There are " . $numRows . " chores on the list"?></h3>
-                <?foreach($todo_list as $entry) : ?>
+                    
+                    
+                    <?foreach($todo_list as $entry) : ?>
                   
-                      <h3><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?=$entry['id'];  ?>"><? echo " item: " . ++$i . " " . $entry['name']; ?><?= " PRIORITY: " . " " . $entry['priority'] ?></h3> 
+                        <h3>
+                            <input name="checkbox[]" type="checkbox" value="<?= $entry['id']; ?>">
+                            item: <?= ++$i ?> <?= $entry['name']; ?>
+                            PRIORITY: <?= $entry['priority'] ?>
+                        </h3> 
                     <?php endforeach;?>
 
+                    <h4>(check boxes as chores are completed)</h4>
+
+                    <h3>
+                        <input name="checkboxall" type="checkbox" id="checkboxall" value="1">
+                        DELETE ALL ITEMS
+                    </h3>
+
+                      <h2><button type="submit" class="btn btn-primary">Remove</button></h2>
                 <?endif;?>
-                    <p>
+                        
+
+                    </div>
+                  </div>
+                    
+                    
+
+                  </form>
+
+                <p>
                          <? if($offset != 0):?>
                            <button><h4><a href="todo_list_sql.php?offset=<?=$offset - $fix;?>">PREV PG</a></h4></button> 
                          <? endif; ?>
@@ -209,15 +227,7 @@ function addChore($dbc){
                             <button><h4><a href="todo_list_sql.php?offset=<?=$offset + $fix;?>">NEXT PG</a></h4></button>
                            
                          <? endif; ?>
-                    </p>       
-
-                    </div>
-                  </div>
-                    <h4>(check boxes as chores are completed)</h4>
-                    <h2><button type="btn-primary" name="remove-entry" value="remove-entry">Remove</button></h2>
-
-                  </form>
-                
+                    </p>   
              
 
                   <form method = "POST">
