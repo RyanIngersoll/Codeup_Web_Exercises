@@ -213,16 +213,16 @@ function addChore($dbc){
 
                     </div>
                   </div>
-                    <h2><button type="btn-primary" name="remove-entry" value="remove-entry">Remove Items</button></h2>
+                    <h4>(check boxes as chores are completed)</h4>
+                    <h2><button type="btn-primary" name="remove-entry" value="remove-entry">Remove</button></h2>
 
                   </form>
                 
-              </div>
-          </div>
-      </div>
+             
+
                   <form method = "POST">
                     <h3><input type="radio" name="sort-type" value="sort-name" id="sort-name"><? echo " "; ?><label for="sort-name"><? echo " "; ?>Name Sort</label><? echo " "; ?><input type="radio" name="sort-type" value="sort-prior" id="sort-prior"><? echo " "; ?><label for="sort-prior"><? echo " "; ?>Priority Sort</label><? echo " "; ?><input type="radio" name="sort-type" value="sort-id" id="sort-id"><? echo " "; ?><label for="sort-id"><? echo " "; ?>ID Sort</label></h3>
-                    <h3><button type="submit" name="sortlist" value = "sortlist">SORT n DISPLAY</button></h3>
+                    <h3><button type="submit" name="sortlist" value = "sortlist">SORT LIST</button></h3>
                   </form>
 
               <?php if(isset($catcherror)) :?>
@@ -232,18 +232,24 @@ function addChore($dbc){
                   <!-- <iframe width="640" height="390" src="//www.youtube.com/v/acdABwYJqks&autoplay=1" frameborder="0" allowfullscreen></iframe> -->
               <? endif; ?>
 
-              <h3>"ADD NEW CHORE"</h3>
+  <div class="col-xs-6 col-md-8">
+    <div class="jumbotron">
+      <h3>"ADD NEW CHORE"</h3>
 
-         <div class="col-xs-6 col-md-4">
+         
             <form method="POST" action="todo_list_sql.php" class= "form-horizontal">
 
                 <label for="name">name: </label><input type="text" name="name" id="name"placeholder="chore" class= "form-control"> <br>
 
                 <label for="priority">priority: </label><input type="text" name="priority" id="priority"placeholder="enter 1 for highest 5 for lowest" class= "form-control"><br>
-
-                <input type="submit" value="submit!!">
+      </div>
+                <h2><input type="submit" value="submit!!"></h2>
             </form> 
-        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
