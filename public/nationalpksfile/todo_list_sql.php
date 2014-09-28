@@ -30,8 +30,10 @@ $fix = fixPage($offset, $limit);
 function delete_list($dbc, $limit, $offset) {
 
     $stmt = $dbc->prepare("DELETE FROM todo_list");
+    //throwError($stmt);
     $stmt->execute();
-  
+    
+    
 }
 
 function get_todo_list($dbc, $limit, $offset) {
@@ -41,9 +43,9 @@ function get_todo_list($dbc, $limit, $offset) {
 	$stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
 	$stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
 	$stmt->execute();
-
+    //throwError($stmt);
 	return $stmt->fetchALL(PDO::FETCH_ASSOC);
-    throwError($stmt);
+    
 }
 
 function get_todo_list_prior($dbc, $limit, $offset) {
@@ -53,6 +55,7 @@ function get_todo_list_prior($dbc, $limit, $offset) {
     $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
     $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
     $stmt->execute();
+    //throwError($stmt);
     return $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 }
@@ -64,9 +67,10 @@ function get_todo_list_name($dbc, $limit, $offset) {
     $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
     $stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
     $stmt->execute();
+    //throwError($stmt);
+    
     return $stmt->fetchALL(PDO::FETCH_ASSOC);
 
-    throwError($stmt);
     
 }
 
