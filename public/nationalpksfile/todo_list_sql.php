@@ -90,6 +90,7 @@ function addChore($dbc){
 
     $stmt->execute();
     header('Location: todo_list_sql.php');
+    exit();
 }
 
 try { 

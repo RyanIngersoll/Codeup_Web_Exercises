@@ -1,0 +1,144 @@
+<html>
+<head>
+    <title>Example jQuery Page</title>
+    <style>
+        .important {
+            text-align: center;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+
+    <script>
+        $('document').ready(function() {
+            $('p').css('font-size', '32px');
+        });
+    </script>
+    <script>
+        $('document').ready(function() {
+            $('.important').css('font-size', '12px');
+        });
+    </script>
+
+    <script>
+        $('document').ready(function() {
+            $('h2').css('font-size', '50px');
+        });
+    </script>
+    <script>
+        $('document').ready(function() {
+            $('.important, p').css('background-color', '#FF0');
+        });
+    </script>
+
+    <script>
+        $('document').ready(function() {
+            $('*').css('border', '1px solid #F00');
+        });
+    </script>
+
+    <script>
+        $('document').ready(function() {
+            $('h2').css('border', '3px solid black');
+        });
+    </script>
+
+   
+        <!-- $('document').ready(function() {
+            $('#codeup').click(function() {
+                alert('h1 with id "codeup" was clicked');
+            });
+        }); -->
+
+
+    <script>
+        $('document').ready(function() {
+            $('#codeup').dblclick(function() {
+                alert('h1 with id "codeup" was double clicked');
+            });
+        });
+    </script>
+
+    
+
+    <script>
+	    $('document').ready(function() {
+	    $('#codeup').hover(
+	        function() {
+	            $(this).css('background-color', '#FF0');
+	        },
+	        function() {
+	            $(this).css('background-color', '#FFF');
+	        }
+	    );
+	});
+	</script>
+
+	<script>
+        $('document').ready(function() {
+            $('p').dblclick(function() {
+                $(this).css('font-size', '18px');
+            });
+        });
+    </script>
+
+    <script>
+	    $('document').ready(function() {
+	    $('li').hover(
+	        function() {
+	            $(this).css('color', 'red');
+	        },
+	        function() {
+	            $(this).css('color', 'black');
+	        }
+	    );
+	});
+	</script>
+
+	<script>
+        $('document').ready(function() {
+            $('#textfield').keyup(function() {
+                alert('.keyup() event fired');
+            });
+        });
+    </script>
+    <!-- $( "#dataTable tbody" ).on( "click", "tr", function() {
+  alert( $( this ).text() );
+}); -->
+
+	<script>
+        $('document').ready(function() {
+            $('body').on("dblclick", function() {
+                $(this).css('font-size', '50px');
+			});
+			
+                // $(this).css('font-size', '50px');
+            
+		});
+		$('body').off("dblclick");
+    </script>
+
+
+</head>
+<body>
+	<h1 id="codeup">Hello Codeup</h1>
+    <h1>Example Page</h1>
+    <div class="important">
+        <h3>NOTICE</h3>
+        <p>This is an important message!</p>
+    </div>
+    <div class="not-important">
+        <h2>Lorem Ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, incididunt ut <span class="important">labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
+    </div>
+    <p class="important">This is also very important.</p>
+    <ul>
+    	<li>dallas cowboys</li>
+    	<li>chicago bears</li>
+    	<li>cleveland browns</li>
+    <ul>
+    <form>
+        <input type="text" id="textfield" name="textfield" placeholder="Type Here"/>
+    </form>
+
+</body>
+</html

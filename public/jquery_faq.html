@@ -1,0 +1,156 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery_faq.html</title>
+	<!-- link to jquery commands file saved to make mac -->
+	<script src="jquery-1.11.1.js"></script>
+	<!-- css classes -->
+	<style type="text/css">
+		.invisible{
+			display: none;
+		}
+
+		.bold{
+			font-weight: bold;
+		}
+
+		.color{
+			color: blue;
+		}
+
+		.centered {
+            text-align: center;
+        }
+        .highlighted {
+            background-color: #FF0;
+        }
+
+		</style>
+
+</head>
+	<body>
+		<h1>Example Page</h1>
+    		<div class="centered important">
+		        <h3>NOTICE</h3>
+		        <p>This is an important message!</p>
+    		</div>
+
+		<div class='container'>
+			<h1>national park faq's</h1>
+			<!-- definition list -->
+				<dl>
+				  <dt>carlsbad</dt>
+				  	<dd>7 weeks in</dd>
+				  <dt>denali</dt>
+				  <!-- makes 'week 1' invisible when button is clicked -->
+				  	<dd class='invisible'>week 1</dd>
+				</dl>
+			</div>
+
+		<div class='container'>
+			<h3>National Parks</h3>
+	    		<ul id="national-parks">
+			        <li>Arches</li>
+			        <li>Badlands</li>
+			        <li>Carlsbad Caverns</li>
+			        <li>Denali</li>
+			        <li>Everglades</li>
+	    		</ul>
+
+	    		<!-- this when 'state parks of texas' is clicked, the ul will hide() and show() -->
+	    	<h2 id="state-parks-texas-toggle">State Parks of Texas</h3>
+				<ul id="state-parks-texas">
+				    <li>Abilene</li>
+				    <li>Big Bend</li>
+				    <li>Choke Canyon</li>
+				    <li>Davis Mountains</li>
+				    <li>Enchanted Rock</li>
+				</ul>
+				<h1>park theme music</h1>
+
+				<iframe width="640" height="390" src="//www.youtube.com/embed/o8lnCna5dOs" frameborder="0" allowfullscreen ></iframe>
+
+				<!-- buttons for toggles-->
+		<div class = 'container'>
+			<input type='button' class= 'btn' id='park' value="Toggle Parks">
+		</div>
+		<div class = 'container'>
+			<input type='button' class= 'btn' id='natpark' value="change to bold">
+		</div>
+		<div class = 'container'>
+			<input type='button' class= 'btn' id='fonts' value= "change to blue">
+		</div>
+		<div class = 'container'>
+			<input type='button' class= 'btn' id='slide' value= "slider">
+		</div>
+	<script>
+		// makes <dd> invisible using id='park' button
+        $('document').ready(function() {
+            $('#park').click(function() {
+               $('dd').toggleClass('invisible');
+            });
+            //makes <ul> bold using id='natpark' button
+            $('#natpark').click(function() {
+               $('ul').children().toggleClass('bold');
+            });
+            //makes <ul> children<li> invisble using id='park' button
+            $('#park').click(function() {
+               $('ul').children().toggleClass('invisible');
+            });
+            $('#natpark').click(function() {
+               $('dd').toggleClass('bold')
+            });
+            // makes every other <li> font blue by clicking id='fonts' button
+            $('#fonts').click(function() {
+            	$("li").each(function(index){
+	            	if (index % 2 !== 0) {
+	               	
+	               		$(this).toggleClass('color');
+	                }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $('document').ready(function() {
+            $('#highlight-important').click(function(event) {
+                event.preventDefault();
+                $('.important').toggleClass('highlighted');
+            });
+
+        });
+    </script>
+
+	<script>
+		    
+		// 	$('#state-parks-texas-toggle').click(function() {
+		// 	    $('#state-parks-texas').toggle(1000);
+		// });
+		// 	$('#state-parks-texas-toggle').click(function() {
+		// 	    $('#national-parks').toggle(2000);
+		// });
+
+			 $('document').ready(function() {
+            	$('#state-parks-texas-toggle').click(function() {
+                	$('#national-parks').fadeToggle(2000);
+            });
+
+            $('#state-parks-texas-toggle').click(function() {
+                $('#state-parks-texas').fadeToggle(4000);
+            });
+            $('#slide').click(function() {
+                $('iframe').slideToggle(10000);
+            });
+            
+
+        });
+
+	</script>
+
+    	<p class="centered important">This is also very important.</p>
+    	<a href="#" id="highlight-important">Click to highlight important text.</a>
+    	<img src="/Users/macpro/whackamole.dev/public/index.html/mole.jpg" alt="whack-a-mole"<
+
+</body>
+</html>
